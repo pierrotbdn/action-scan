@@ -1,0 +1,40 @@
+name: ACTION SCAN Alert
+
+on:
+  schedule:
+    - cron: '5 7 * * 1-5'
+    - cron: '0 10 * * 1-5'
+    - cron: '35 13 * * 1-5'
+    - cron: '5 20 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ACTION SCAN
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python3 << 'EOF'
+          import urllib.request
+          import json
+          import os
+
+          TOKEN = os.environ['TELEGRAM_TOKEN']
+          CHAT_ID = os.environ['TELEGRAM_CHAT_ID']
+
+          STOCKS = [
+            {"name": "S&P Global", "ticker": "SPGI", "type": "A", "high": 568.275, "currency": "USD", "list": "CORE"},
+            {"name": "Moody's", "ticker": "MCO", "type": "A", "high": 546.88, "currency": "USD", "list": "CORE"},
+            {"name": "Microsoft", "ticker": "MSFT", "type": "B", "high": 555.45, "currency": "USD", "list": "CORE"},
+            {"name": "Hermes", "ticker": "RMS.PA", "type": "B", "high": 2957, "currency": "EUR", "list": "CORE"},
+            {"name": "Costco", "ticker": "COST", "type": "B", "high": 1078.235, "currency": "USD", "list": "CORE"},
+            {"name": "Chubb", "ticker": "CB", "type": "B", "high": 342.69, "currency": "USD", "list": "CORE"},
+            {"name": "ASML", "ticker": "ASML.AS", "type": "C", "high": 1313.8, "currency": "EUR", "list": "CORE"},
+            {"name": "Schneider Electric", "ticker": "SU.PA", "type": "C", "high": 280.05, "currency": "EUR", "list": "CORE"},
+            {"name": "Ferrari", "ticker": "RACE.MI", "type": "C", "high": 492.8, "currency": "EUR", "list": "CORE"},
+            {"name": "Intuitive Surgical", "ticker": "ISRG", "type": "C", "high": 615.99, "currency": "USD", "list": "CORE"},
+            {"name": "Nvidia", "ticker": "NVDA", "type": "D", "high": 212.19, "currency": "USD", "list": "CORE"},
+            {"name": "Novo Nordisk ADR", "ticker": "NVO", "type": "D", "high": 148​​​​​​​​​​​​​​​​
