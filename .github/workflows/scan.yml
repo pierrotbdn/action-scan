@@ -1,5 +1,4 @@
 name: ACTION SCAN Alert
-
 on:
   schedule:
     - cron: '5 7 * * 1-5'
@@ -7,7 +6,6 @@ on:
     - cron: '35 13 * * 1-5'
     - cron: '5 20 * * 1-5'
   workflow_dispatch:
-
 jobs:
   scan:
     runs-on: ubuntu-latest
@@ -17,24 +15,66 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          python3 << 'EOF'
-          import urllib.request
-          import json
-          import os
-
+          python3 - << 'PYEOF'
+          import urllib.request, json, os
           TOKEN = os.environ['TELEGRAM_TOKEN']
           CHAT_ID = os.environ['TELEGRAM_CHAT_ID']
-
           STOCKS = [
-            {"name": "S&P Global", "ticker": "SPGI", "type": "A", "high": 568.275, "currency": "USD", "list": "CORE"},
-            {"name": "Moody's", "ticker": "MCO", "type": "A", "high": 546.88, "currency": "USD", "list": "CORE"},
-            {"name": "Microsoft", "ticker": "MSFT", "type": "B", "high": 555.45, "currency": "USD", "list": "CORE"},
-            {"name": "Hermes", "ticker": "RMS.PA", "type": "B", "high": 2957, "currency": "EUR", "list": "CORE"},
-            {"name": "Costco", "ticker": "COST", "type": "B", "high": 1078.235, "currency": "USD", "list": "CORE"},
-            {"name": "Chubb", "ticker": "CB", "type": "B", "high": 342.69, "currency": "USD", "list": "CORE"},
-            {"name": "ASML", "ticker": "ASML.AS", "type": "C", "high": 1313.8, "currency": "EUR", "list": "CORE"},
-            {"name": "Schneider Electric", "ticker": "SU.PA", "type": "C", "high": 280.05, "currency": "EUR", "list": "CORE"},
-            {"name": "Ferrari", "ticker": "RACE.MI", "type": "C", "high": 492.8, "currency": "EUR", "list": "CORE"},
-            {"name": "Intuitive Surgical", "ticker": "ISRG", "type": "C", "high": 615.99, "currency": "USD", "list": "CORE"},
-            {"name": "Nvidia", "ticker": "NVDA", "type": "D", "high": 212.19, "currency": "USD", "list": "CORE"},
-            {"name": "Novo Nordisk ADR", "ticker": "NVO", "type": "D", "high": 148​​​​​​​​​​​​​​​​
+            {"name":"SP Global","ticker":"SPGI","type":"A","high":568.275,"currency":"USD","list":"CORE"},
+            {"name":"Moodys","ticker":"MCO","type":"A","high":546.88,"currency":"USD","list":"CORE"},
+            {"name":"Microsoft","ticker":"MSFT","type":"B","high":555.45,"currency":"USD","list":"CORE"},
+            {"name":"Hermes","ticker":"RMS.PA","type":"B","high":2957,"currency":"EUR","list":"CORE"},
+            {"name":"Costco","ticker":"COST","type":"B","high":1078.235,"currency":"USD","list":"CORE"},
+            {"name":"Chubb","ticker":"CB","type":"B","high":342.69,"currency":"USD","list":"CORE"},
+            {"name":"ASML","ticker":"ASML.AS","type":"C","high":1313.8,"currency":"EUR","list":"CORE"},
+            {"name":"Schneider","ticker":"SU.PA","type":"C","high":280.05,"currency":"EUR","list":"CORE"},
+            {"name":"Ferrari","ticker":"RACE.MI","type":"C","high":492.8,"currency":"EUR","list":"CORE"},
+            {"name":"Intuitive","ticker":"ISRG","type":"C","high":615.99,"currency":"USD","list":"CORE"},
+            {"name":"Nvidia","ticker":"NVDA","type":"D","high":212.19,"currency":"USD","list":"CORE"},
+            {"name":"Novo Nordisk","ticker":"NVO","type":"D","high":148.15,"currency":"USD","list":"CORE"},
+            {"name":"Porsche","ticker":"P911.DE","type":"C","high":120.8,"currency":"EUR","list":"OPP"},
+            {"name":"Volkswagen","ticker":"VOWG_p.DE","type":"C","high":357.4,"currency":"EUR","list":"OPP"},
+            {"name":"LVMH","ticker":"MC.PA","type":"C","high":904.6,"currency":"EUR","list":"OPP"},
+            {"name":"AMD","ticker":"AMD","type":"C","high":267.08,"currency":"USD","list":"OPP"},
+            {"name":"BankAmerica","ticker":"BAC","type":"C","high":57.55,"currency":"USD","list":"OPP"},
+            {"name":"Thales","ticker":"HO.PA","type":"C","high":279.3,"currency":"EUR","list":"OPP"},
+            {"name":"Adidas","ticker":"ADS.DE","type":"D","high":336.25,"currency":"EUR","list":"OPP"},
+            {"name":"Adobe","ticker":"ADBE","type":"D","high":699.54,"currency":"USD","list":"OPP"},
+            {"name":"Disney","ticker":"DIS","type":"D","high":203.01,"currency":"USD","list":"OPP"},
+            {"name":"Dassault","ticker":"DSY.PA","type":"D","high":56.82,"currency":"EUR","list":"OPP"},
+            {"name":"Nike","ticker":"NKE","type":"D","high":179.1,"currency":"USD","list":"OPP"},
+            {"name":"Sony","ticker":"SONY","type":"D","high":30.34,"currency":"USD","list":"OPP"},
+          ]
+          TYPES={"A":{"ep":(-35,-25),"eco":-35},"B":{"ep":(-45,-35),"eco":-45},"C":{"ep":(-55,-45),"eco":-55},"D":{"ep":(-75,-55),"eco":-75}}
+          def fetch(t):
+            try:
+              url="https://query1.finance.yahoo.com/v8/finance/chart/"+t+"?interval=1d&range=1d"
+              req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0"})
+              with urllib.request.urlopen(req,timeout=10) as r:
+                return float(json.loads(r.read())["chart"]["result"][0]["meta"]["regularMarketPrice"])
+            except:
+              return None
+          alerts=[]
+          for s in STOCKS:
+            p=fetch(s["ticker"])
+            if p is None:
+              continue
+            dd=(p/s["high"]-1)*100
+            t=TYPES[s["type"]]
+            eco=dd<=t["eco"]
+            ep=eco or(t["ep"][0]<=dd<=t["ep"][1])
+            if ep or eco:
+              alerts.append({"name":s["name"],"list":s["list"],"price":p,"currency":s["currency"],"dd":dd,"zone":"ECO" if eco else "ECO PREMIUM","type":s["type"]})
+          if alerts:
+            lines=["ACTION SCAN - ZONES DETECTEES\n"]
+            for a in alerts:
+              lines.append(a["zone"]+" "+a["name"]+" Type "+a["type"]+"\nPrix: "+str(round(a["price"],2))+" "+a["currency"]+" DD: "+str(round(a["dd"],2))+"%\n")
+            msg="\n".join(lines)
+          else:
+            msg="ACTION SCAN - Aucune zone atteinte."
+          url="https://api.telegram.org/bot"+TOKEN+"/sendMessage"
+          payload=json.dumps({"chat_id":CHAT_ID,"text":msg}).encode()
+          req=urllib.request.Request(url,data=payload,headers={"Content-Type":"application/json"})
+          urllib.request.urlopen(req)
+          print("OK")
+          PYEOF
