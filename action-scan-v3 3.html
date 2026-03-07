@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -8,115 +9,97 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap');
 
 :root {
-  --bg: #080810;
-  --bg2: #0e0e1a;
-  --border: #1a1a2e;
-  --accent: #c8ff00;
-  --accent2: #00d4ff;
-  --green: #00ff88;
-  --red: #ff3355;
-  --muted: #333355;
-  --text: #e8e8f0;
-  --sub: #6666aa;
-  --card: #0d0d1f;
+–bg: #080810;
+–bg2: #0e0e1a;
+–border: #1a1a2e;
+–accent: #c8ff00;
+–accent2: #00d4ff;
+–green: #00ff88;
+–red: #ff3355;
+–muted: #333355;
+–text: #e8e8f0;
+–sub: #6666aa;
+–card: #0d0d1f;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'DM Sans', sans-serif;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.4;
-}
+- { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(–bg); color: var(–text); font-family: ‘DM Sans’, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  body::before { content: ‘’; position: fixed; inset: 0; background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘0.03’/%3E%3C/svg%3E”); pointer-events: none; z-index: 0; opacity: 0.4; }
 
 .wrap { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 24px 16px 60px; }
 
-.header { display: flex; flex-direction: column; gap: 4px; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+.header { display: flex; flex-direction: column; gap: 4px; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(–border); }
 .header-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-.logo { font-family: 'Bebas Neue', sans-serif; font-size: 42px; line-height: 1; color: var(--accent); letter-spacing: 2px; }
-.version-badge { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--bg); background: var(--accent); padding: 3px 8px; border-radius: 2px; letter-spacing: 1px; margin-top: 6px; }
-.header-meta { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--sub); letter-spacing: 1px; }
+.logo { font-family: ‘Bebas Neue’, sans-serif; font-size: 42px; line-height: 1; color: var(–accent); letter-spacing: 2px; }
+.version-badge { font-family: ‘DM Mono’, monospace; font-size: 10px; color: var(–bg); background: var(–accent); padding: 3px 8px; border-radius: 2px; letter-spacing: 1px; margin-top: 6px; }
+.header-meta { font-family: ‘DM Mono’, monospace; font-size: 11px; color: var(–sub); letter-spacing: 1px; }
 
 .clock-row { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
-.clock-item { font-family: 'DM Mono', monospace; font-size: 11px; padding: 6px 12px; border: 1px solid var(--border); border-radius: 3px; color: var(--sub); transition: all 0.3s; }
-.clock-item.active { border-color: var(--accent); color: var(--accent); background: #c8ff0010; }
-.clock-item .time { font-size: 13px; font-weight: 500; color: var(--text); }
-.clock-item.active .time { color: var(--accent); }
+.clock-item { font-family: ‘DM Mono’, monospace; font-size: 11px; padding: 6px 12px; border: 1px solid var(–border); border-radius: 3px; color: var(–sub); transition: all 0.3s; }
+.clock-item.active { border-color: var(–accent); color: var(–accent); background: #c8ff0010; }
+.clock-item .time { font-size: 13px; font-weight: 500; color: var(–text); }
+.clock-item.active .time { color: var(–accent); }
 
-.scan-btn { width: 100%; background: var(--accent); color: var(--bg); border: none; font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px; padding: 16px; cursor: pointer; border-radius: 4px; margin-bottom: 8px; transition: all 0.2s; }
+.scan-btn { width: 100%; background: var(–accent); color: var(–bg); border: none; font-family: ‘Bebas Neue’, sans-serif; font-size: 22px; letter-spacing: 3px; padding: 16px; cursor: pointer; border-radius: 4px; margin-bottom: 8px; transition: all 0.2s; }
 .scan-btn:hover { opacity: 0.9; transform: translateY(-1px); }
 .scan-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
-#progress-bar { height: 2px; background: var(--border); border-radius: 1px; margin-bottom: 24px; overflow: hidden; }
-#progress-fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.3s; }
-#status-msg { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--sub); text-align: center; margin-bottom: 4px; min-height: 16px; }
+#progress-bar { height: 2px; background: var(–border); border-radius: 1px; margin-bottom: 24px; overflow: hidden; }
+#progress-fill { height: 100%; background: var(–accent); width: 0%; transition: width 0.3s; }
+#status-msg { font-family: ‘DM Mono’, monospace; font-size: 11px; color: var(–sub); text-align: center; margin-bottom: 4px; min-height: 16px; }
 
 .section-header { display: flex; align-items: center; gap: 12px; margin: 32px 0 16px; }
-.section-label { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 2px; color: var(--text); }
-.section-count { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--sub); border: 1px solid var(--border); padding: 2px 8px; border-radius: 2px; }
-.zone-count { font-family: 'DM Mono', monospace; font-size: 10px; margin-left: auto; color: var(--green); }
+.section-label { font-family: ‘Bebas Neue’, sans-serif; font-size: 20px; letter-spacing: 2px; color: var(–text); }
+.section-count { font-family: ‘DM Mono’, monospace; font-size: 10px; color: var(–sub); border: 1px solid var(–border); padding: 2px 8px; border-radius: 2px; }
+.zone-count { font-family: ‘DM Mono’, monospace; font-size: 10px; margin-left: auto; color: var(–green); }
 
 .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-table { width: 100%; border-collapse: collapse; font-family: 'DM Mono', monospace; font-size: 12px; min-width: 600px; }
-th { text-align: left; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--sub); padding: 8px 10px; border-bottom: 1px solid var(--border); font-weight: 400; }
-td { padding: 11px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+table { width: 100%; border-collapse: collapse; font-family: ‘DM Mono’, monospace; font-size: 12px; min-width: 600px; }
+th { text-align: left; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(–sub); padding: 8px 10px; border-bottom: 1px solid var(–border); font-weight: 400; }
+td { padding: 11px 10px; border-bottom: 1px solid var(–border); vertical-align: middle; }
 tr { transition: background 0.15s; }
 tr:hover td { background: #0f0f20; }
 tr.in-zone td { background: #00ff8806; }
 tr.in-zone:hover td { background: #00ff8810; }
 
-.name-cell { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 13px; white-space: nowrap; }
-.zone-dot { display: inline-block; width: 6px; height: 6px; background: var(--green); border-radius: 50%; margin-left: 6px; vertical-align: middle; box-shadow: 0 0 6px var(--green); }
-.type-cell { font-size: 10px; color: var(--sub); }
-.type-letter { font-size: 13px; font-weight: 500; color: var(--accent2); margin-right: 2px; }
-.high-cell { color: var(--sub); white-space: nowrap; }
+.name-cell { font-family: ‘DM Sans’, sans-serif; font-weight: 500; font-size: 13px; white-space: nowrap; }
+.zone-dot { display: inline-block; width: 6px; height: 6px; background: var(–green); border-radius: 50%; margin-left: 6px; vertical-align: middle; box-shadow: 0 0 6px var(–green); }
+.type-cell { font-size: 10px; color: var(–sub); }
+.type-letter { font-size: 13px; font-weight: 500; color: var(–accent2); margin-right: 2px; }
+.high-cell { color: var(–sub); white-space: nowrap; }
 .price-cell { font-size: 14px; font-weight: 500; white-space: nowrap; }
-.price-loading { color: var(--muted); }
-.price-live { color: var(--text); }
-.price-error { color: var(--red); font-size: 10px; }
+.price-loading { color: var(–muted); }
+.price-live { color: var(–text); }
+.price-error { color: var(–red); font-size: 10px; }
 .dd-cell { font-size: 13px; font-weight: 500; white-space: nowrap; }
-.dd-none { color: var(--sub); }
-.dd-low { color: var(--sub); }
+.dd-none { color: var(–sub); }
+.dd-low { color: var(–sub); }
 .dd-mid { color: #ffaa00; }
 .dd-high { color: #ff6600; }
-.dd-zone { color: var(--green); }
+.dd-zone { color: var(–green); }
 
 .zone-cell { text-align: center; }
 .z { display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 3px; font-size: 11px; }
-.z-on { background: #00ff8820; color: var(--green); border: 1px solid #00ff8840; }
-.z-off { background: #ffffff08; color: var(--muted); border: 1px solid var(--border); font-size: 9px; }
-
-.type-sep td { padding: 4px 10px; background: var(--bg2); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); }
+.z-on { background: #00ff8820; color: var(–green); border: 1px solid #00ff8840; }
+.z-off { background: #ffffff08; color: var(–muted); border: 1px solid var(–border); font-size: 9px; }
+.type-sep td { padding: 4px 10px; background: var(–bg2); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(–muted); border-bottom: 1px solid var(–border); }
 
 .summary { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 32px; }
-.sum-card { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 16px; }
-.sum-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--sub); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
-.sum-val { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--accent); line-height: 1; }
-.sum-sub { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--sub); margin-top: 4px; }
-
-.timestamp { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-align: center; margin-top: 32px; }
+.sum-card { background: var(–card); border: 1px solid var(–border); border-radius: 6px; padding: 16px; }
+.sum-label { font-family: ‘DM Mono’, monospace; font-size: 10px; color: var(–sub); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+.sum-val { font-family: ‘Bebas Neue’, sans-serif; font-size: 32px; color: var(–accent); line-height: 1; }
+.sum-sub { font-family: ‘DM Mono’, monospace; font-size: 10px; color: var(–sub); margin-top: 4px; }
+.timestamp { font-family: ‘DM Mono’, monospace; font-size: 10px; color: var(–muted); text-align: center; margin-top: 32px; }
 </style>
+
 </head>
 <body>
 <div class="wrap">
-
   <div class="header">
     <div class="header-top">
       <div>
         <div class="logo">ACTION SCAN</div>
-        <div class="header-meta">WATCHLIST MONITOR · PARIS TIMEZONE · YAHOO FINANCE</div>
+        <div class="header-meta">WATCHLIST MONITOR · PARIS TIMEZONE</div>
       </div>
       <div class="version-badge">v3.0</div>
     </div>
@@ -129,7 +112,8 @@ tr.in-zone:hover td { background: #00ff8810; }
     <div class="clock-item" data-slot="1325"><div class="time">22:05</div><div>Clôture US</div></div>
   </div>
 
-  <button class="scan-btn" id="scan-btn" onclick="runScan()">▶ LANCER LE SCAN</button>
+<button class="scan-btn" id="scan-btn" onclick="runScan()">▶ LANCER LE SCAN</button>
+
   <div id="status-msg">Prêt · 24 valeurs · Yahoo Finance</div>
   <div id="progress-bar"><div id="progress-fill"></div></div>
 
@@ -179,7 +163,6 @@ tr.in-zone:hover td { background: #00ff8810; }
       <div class="sum-sub" id="sum-session">—</div>
     </div>
   </div>
-
   <div class="timestamp" id="timestamp"></div>
 </div>
 
@@ -192,34 +175,66 @@ const TYPES = {
 };
 
 const CORE = [
-  { name: "S&P Global",          ticker: "SPGI",     type: "A", high: 568.275,  currency: "USD" },
-  { name: "Moody's",             ticker: "MCO",      type: "A", high: 546.88,   currency: "USD" },
-  { name: "Microsoft",           ticker: "MSFT",     type: "B", high: 555.45,   currency: "USD" },
-  { name: "Hermès",              ticker: "RMS.PA",   type: "B", high: 2957,     currency: "EUR" },
-  { name: "Costco",              ticker: "COST",     type: "B", high: 1078.235, currency: "USD" },
-  { name: "Chubb",               ticker: "CB",       type: "B", high: 342.69,   currency: "USD" },
-  { name: "ASML",                ticker: "ASML.AS",  type: "C", high: 1313.8,   currency: "EUR" },
-  { name: "Schneider Electric",  ticker: "SU.PA",    type: "C", high: 280.05,   currency: "EUR" },
-  { name: "Ferrari",             ticker: "RACE.MI",  type: "C", high: 492.8,    currency: "EUR" },
-  { name: "Intuitive Surgical",  ticker: "ISRG",     type: "C", high: 615.99,   currency: "USD" },
-  { name: "Nvidia",              ticker: "NVDA",     type: "D", high: 212.19,   currency: "USD" },
-  { name: "Novo Nordisk ADR",    ticker: "NVO",      type: "D", high: 148.15,   currency: "USD" },
+  { name: "S&P Global",         ticker: "SPGI",      type: "A", high: 568.275,  currency: "USD" },
+  { name: "Moody's",            ticker: "MCO",       type: "A", high: 546.88,   currency: "USD" },
+  { name: "Microsoft",          ticker: "MSFT",      type: "B", high: 555.45,   currency: "USD" },
+  { name: "Hermès",             ticker: "RMS.PA",    type: "B", high: 2957,     currency: "EUR" },
+  { name: "Costco",             ticker: "COST",      type: "B", high: 1078.235, currency: "USD" },
+  { name: "Chubb",              ticker: "CB",        type: "B", high: 342.69,   currency: "USD" },
+  { name: "ASML",               ticker: "ASML.AS",   type: "C", high: 1313.8,   currency: "EUR" },
+  { name: "Schneider Electric", ticker: "SU.PA",     type: "C", high: 280.05,   currency: "EUR" },
+  { name: "Ferrari",            ticker: "RACE.MI",   type: "C", high: 492.8,    currency: "EUR" },
+  { name: "Intuitive Surgical", ticker: "ISRG",      type: "C", high: 615.99,   currency: "USD" },
+  { name: "Nvidia",             ticker: "NVDA",      type: "D", high: 212.19,   currency: "USD" },
+  { name: "Novo Nordisk ADR",   ticker: "NVO",       type: "D", high: 148.15,   currency: "USD" },
 ];
 
 const OPP = [
-  { name: "Porsche",             ticker: "P911.DE",      type: "C", high: 120.800,  currency: "EUR" },
-  { name: "Volkswagen",          ticker: "VOWG_p.DE",    type: "C", high: 357.400,  currency: "EUR" },
-  { name: "LVMH",                ticker: "MC.PA",        type: "C", high: 904.600,  currency: "EUR" },
-  { name: "AMD",                 ticker: "AMD",          type: "C", high: 267.0799, currency: "USD" },
-  { name: "Bank of America",     ticker: "BAC",          type: "C", high: 57.550,   currency: "USD" },
-  { name: "Thales",              ticker: "HO.PA",        type: "C", high: 279.300,  currency: "EUR" },
-  { name: "Adidas",              ticker: "ADS.DE",       type: "D", high: 336.250,  currency: "EUR" },
-  { name: "Adobe",               ticker: "ADBE",         type: "D", high: 699.540,  currency: "USD" },
-  { name: "Disney",              ticker: "DIS",          type: "D", high: 203.010,  currency: "USD" },
-  { name: "Dassault Systèmes",   ticker: "DSY.PA",       type: "D", high: 56.820,   currency: "EUR" },
-  { name: "Nike",                ticker: "NKE",          type: "D", high: 179.100,  currency: "USD" },
-  { name: "Sony ADR",            ticker: "SONY",         type: "D", high: 30.340,   currency: "USD" },
+  { name: "Porsche",            ticker: "P911.DE",   type: "C", high: 120.800,  currency: "EUR" },
+  { name: "Volkswagen",         ticker: "VOWG_p.DE", type: "C", high: 357.400,  currency: "EUR" },
+  { name: "LVMH",               ticker: "MC.PA",     type: "C", high: 904.600,  currency: "EUR" },
+  { name: "AMD",                ticker: "AMD",       type: "C", high: 267.0799, currency: "USD" },
+  { name: "Bank of America",    ticker: "BAC",       type: "C", high: 57.550,   currency: "USD" },
+  { name: "Thales",             ticker: "HO.PA",     type: "C", high: 279.300,  currency: "EUR" },
+  { name: "Adidas",             ticker: "ADS.DE",    type: "D", high: 336.250,  currency: "EUR" },
+  { name: "Adobe",              ticker: "ADBE",      type: "D", high: 699.540,  currency: "USD" },
+  { name: "Disney",             ticker: "DIS",       type: "D", high: 203.010,  currency: "USD" },
+  { name: "Dassault Systèmes",  ticker: "DSY.PA",    type: "D", high: 56.820,   currency: "EUR" },
+  { name: "Nike",               ticker: "NKE",       type: "D", high: 179.100,  currency: "USD" },
+  { name: "Sony ADR",           ticker: "SONY",      type: "D", high: 30.340,   currency: "USD" },
 ];
+
+// Multiple proxies to try in order
+const PROXIES = [
+  ticker => `https://corsproxy.io/?url=${encodeURIComponent(`https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=1d`)}`,
+  ticker => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(`https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=1d`)}`,
+  ticker => `https://thingproxy.freeboard.io/fetch/https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?interval=1d&range=1d`,
+];
+
+async function fetchPrice(ticker) {
+  for (const proxyFn of PROXIES) {
+    try {
+      const url = proxyFn(ticker);
+      const res = await fetch(url, { signal: AbortSignal.timeout(8000) });
+      if (!res.ok) continue;
+      const text = await res.text();
+      const data = JSON.parse(text);
+      const result = data?.chart?.result?.[0];
+      if (!result) continue;
+      const price = result.meta?.regularMarketPrice;
+      if (price && price > 0) return parseFloat(price);
+    } catch(e) {
+      continue;
+    }
+  }
+  return null;
+}
+
+function getParisMins() {
+  const now = new Date();
+  const paris = new Date(now.toLocaleString("en-US", { timeZone: "Europe/Paris" }));
+  return paris.getHours() * 60 + paris.getMinutes();
+}
 
 function getSession() {
   const t = getParisMins();
@@ -228,12 +243,6 @@ function getSession() {
   if (t < 935)  return "Session EU après-midi";
   if (t < 1325) return "Session US";
   return "Post-clôture US";
-}
-
-function getParisMins() {
-  const now = new Date();
-  const paris = new Date(now.toLocaleString("en-US", { timeZone: "Europe/Paris" }));
-  return paris.getHours() * 60 + paris.getMinutes();
 }
 
 function updateClock() {
@@ -257,29 +266,6 @@ function ddClass(dd) {
   if (dd > -25) return 'dd-mid';
   if (dd > -45) return 'dd-high';
   return 'dd-zone';
-}
-
-function formatPrice(p) {
-  const s = p.toString();
-  const parts = s.split('.');
-  if (parts.length === 1) return s;
-  return parts[0] + '.' + parts[1].replace(/0+$/, '') || parts[0];
-}
-
-async function fetchPrice(ticker) {
-  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(ticker)}?interval=1d&range=1d`;
-  try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
-    const result = data?.chart?.result?.[0];
-    if (!result) throw new Error('no result');
-    const price = result.meta?.regularMarketPrice;
-    if (!price) throw new Error('no price');
-    return parseFloat(price);
-  } catch(e) {
-    return null;
-  }
 }
 
 function rowId(ticker) { return ticker.replace(/[^a-zA-Z0-9]/g, '_'); }
@@ -316,7 +302,6 @@ async function runScan() {
   const btn = document.getElementById('scan-btn');
   const msg = document.getElementById('status-msg');
   const fill = document.getElementById('progress-fill');
-
   btn.disabled = true;
   btn.textContent = '⏳ SCAN EN COURS...';
   fill.style.width = '0%';
@@ -332,17 +317,16 @@ async function runScan() {
   for (const s of all) {
     const id = rowId(s.ticker);
     msg.textContent = `[${done+1}/24] ${s.name}...`;
-
     const price = await fetchPrice(s.ticker);
     done++;
     fill.style.width = (done / 24 * 100) + '%';
 
-    const priceEl  = document.getElementById(`price-${id}`);
-    const ddEl     = document.getElementById(`dd-${id}`);
-    const epEl     = document.getElementById(`ep-${id}`);
-    const ecoEl    = document.getElementById(`eco-${id}`);
-    const dotEl    = document.getElementById(`dot-${id}`);
-    const rowEl    = document.getElementById(`row-${id}`);
+    const priceEl = document.getElementById(`price-${id}`);
+    const ddEl    = document.getElementById(`dd-${id}`);
+    const epEl    = document.getElementById(`ep-${id}`);
+    const ecoEl   = document.getElementById(`eco-${id}`);
+    const dotEl   = document.getElementById(`dot-${id}`);
+    const rowEl   = document.getElementById(`row-${id}`);
 
     if (price === null) {
       priceEl.textContent = 'ERREUR';
@@ -351,7 +335,8 @@ async function runScan() {
       epEl.textContent = '✕'; epEl.className = 'z z-off';
       ecoEl.textContent = '✕'; ecoEl.className = 'z z-off';
     } else {
-      priceEl.textContent = formatPrice(price) + ' ' + s.currency;
+      const p = price % 1 === 0 ? price.toFixed(0) : parseFloat(price.toFixed(4)).toString();
+      priceEl.textContent = p + ' ' + s.currency;
       priceEl.className = 'price-cell price-live';
 
       const dd = (price / s.high - 1) * 100;
@@ -366,19 +351,12 @@ async function runScan() {
 
       if (zones.ep)  epCount++;
       if (zones.eco) ecoCount++;
-
-      if (zones.ep || zones.eco) {
-        dotEl.style.display = 'inline-block';
-        rowEl.classList.add('in-zone');
-      }
-
+      if (zones.ep || zones.eco) { dotEl.style.display = 'inline-block'; rowEl.classList.add('in-zone'); }
       if (dd < maxDd) { maxDd = dd; maxDdName = s.name; }
     }
-
-    await new Promise(r => setTimeout(r, 250));
+    await new Promise(r => setTimeout(r, 300));
   }
 
-  // Summary
   document.getElementById('sum-ep').textContent = epCount;
   document.getElementById('sum-eco').textContent = ecoCount;
   document.getElementById('sum-max-dd').textContent = maxDd.toFixed(1) + '%';
@@ -401,11 +379,11 @@ async function runScan() {
   btn.textContent = '↺ RELANCER LE SCAN';
 }
 
-// Init
 renderRows(CORE, 'tbody-core');
 renderRows(OPP, 'tbody-opp');
 updateClock();
 setInterval(updateClock, 30000);
 </script>
+
 </body>
 </html>
